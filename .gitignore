@@ -1,0 +1,12 @@
+*.pbxuser
+*.perspectivev3
+*.xcworkspace
+xcuserdata
+*.mode1v3
+.DS_Store
+profile
+build
+
+Graphics
+Tests
+Unused Resources
