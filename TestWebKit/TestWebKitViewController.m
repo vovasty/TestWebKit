@@ -95,6 +95,8 @@
 
 - (IBAction) paginate:(id)sender
 {
+//    mWebFrame = mWebView.frame;
+//    mWebView.frame = CGRectZero;
     [self startTimer];
     NSString *js = [NSString stringWithFormat:@"paginate(%d,%d);", (NSUInteger)CGRectGetWidth(mWebView.frame), (NSUInteger)CGRectGetHeight(mWebView.frame)-10];
     NSString* result = [mWebView stringByEvaluatingJavaScriptFromString:js];
@@ -106,10 +108,13 @@
     mButtonDown.enabled = YES;
     mButtonUp.enabled = YES;
     mButtonPaginate.enabled = NO;
+//    mWebView.frame = mWebFrame;
 }
 
 - (IBAction) load:(id)sender
 {
+    mWebFrame = mWebView.frame;
+    mWebView.frame = CGRectZero;
     UIButton* b = (UIButton*)sender;
     [mWebView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:b.titleLabel.text ofType:@"html"] isDirectory:NO]]];
 }
@@ -135,5 +140,6 @@
     [mWebView stringByEvaluatingJavaScriptFromString:loadCSS];
     [self reportTimer:@"loading"];
     mButtonPaginate.enabled = YES;
+    mWebView.frame = mWebFrame;
 }
 @end
