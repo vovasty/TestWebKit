@@ -106,6 +106,7 @@
     mButtonDown.enabled = YES;
     mButtonUp.enabled = YES;
     mButtonPaginate.enabled = NO;
+    mWebView.hidden = NO;
 }
 
 - (void) loadIt:(NSString*) str
@@ -124,6 +125,10 @@
     [self loadIt:b.titleLabel.text];
 }
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    mWebView.hidden = YES;
+}
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
@@ -138,6 +143,7 @@
     mButtonUp.enabled = NO;
     mButtonDown.enabled = NO;
     mButtonPaginate.enabled = NO;
+    mWebView.hidden = YES;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
