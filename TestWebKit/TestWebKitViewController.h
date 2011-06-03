@@ -20,8 +20,6 @@
     IBOutlet UIButton* mButtonUp;
     IBOutlet UIButton* mButtonDown;
     IBOutlet UIButton* mButtonPaginate;
-    
-    CGRect mWebFrame;
 }
 
 - (IBAction) pgUp:(id)sender;
