@@ -36,14 +36,17 @@ function loadResource(filename, filetype){
 function paginate(desiredWidth, desiredHeight, colsPerPage)
 {
     var gap = 0;
+ 
+    var colWidth = Math.floor(desiredWidth / colsPerPage);
     
     var sStyle =  "html{" + 
     "width:"+((desiredWidth * 2) + gap)+ "px;" + 
-    "-webkit-column-width:"+Math.floor(desiredWidth / colsPerPage) + "px;" + 
+    "height:"+desiredHeight+"px;"+
+    "-webkit-column-width:"+colWidth + "px;" + 
     "}" +
     "img{" + 
-    "max-width:"+(Math.floor(desiredWidth / colsPerPage) - 5)+"px;" + 
-    "max-height:"+desiredHeight+"px;" + 
+    "max-width:"+colWidth+"px;" + 
+    "max-height:"+Math.floor((desiredHeight*5)/6)+"px;" + 
     "}";
     
     var style = document.getElementById("__pagination");
