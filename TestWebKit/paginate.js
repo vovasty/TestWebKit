@@ -21,12 +21,13 @@ function paginate(desiredWidth, desiredHeight)
 {
     var bodyID = document.getElementsByTagName('body')[0];
     totalHeight = bodyID.offsetHeight;
-    pageCount = Math.floor(totalHeight/desiredHeight) + 1;
-    bodyID.style.paddingBottom = 20; //(optional) prevents clipped letters around the edges
+    var pageCount = Math.floor(totalHeight/desiredHeight) + 1;
+    bodyID.style.paddingBottom = 10; //(optional) prevents clipped letters around the edges
     bodyID.style.width = desiredWidth * pageCount;
     bodyID.style.height = desiredHeight;
     bodyID.style.WebkitColumnCount = pageCount;
-    return pageCount;
+    bodyID.style.WebkitColumnGap = 10;
+    return Math.floor(bodyID.scrollWidth / bodyID.clientWidth) + 1;
 }
 
 function scrollToPosition(position)
