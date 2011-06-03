@@ -33,14 +33,11 @@ function loadResource(filename, filetype){
 //}
 //body { padding: 0; margin: 0; } /* remove extra spaces */
 
-function paginate(desiredWidth, desiredHeight)
+function paginate(desiredWidth, desiredHeight, colsPerPage)
 {
     var gap = 0;
-    var colsPerPage = 1;
     
-    
-    var style = document.createElement("style");
-    style.innerHTML = "html{" + 
+    var sStyle =  "html{" + 
     "width:"+((desiredWidth * 2) + gap)+ "px;" + 
     "-webkit-column-width:"+Math.floor(desiredWidth / colsPerPage) + "px;" + 
     "}" +
@@ -49,8 +46,15 @@ function paginate(desiredWidth, desiredHeight)
     "max-height:"+desiredHeight+"px;" + 
     "}";
     
-    alert(style.innerHTML);
-    document.head.appendChild(style);
+    var style = document.getElementById("__pagination");
+    if (!style)
+    {
+        style = document.createElement("style");
+        style.id = "__pagination";
+        document.head.appendChild(style);
+    }
+    
+    style.innerHTML = sStyle;
     
     return Math.round(document.body.scrollWidth / document.body.clientWidth);
 }

@@ -96,7 +96,7 @@
 - (IBAction) paginate:(id)sender
 {
     [self startTimer];
-    NSString *js = [NSString stringWithFormat:@"paginate(%d,%d);", (NSUInteger)CGRectGetWidth(mWebView.frame), (NSUInteger)CGRectGetHeight(mWebView.frame)-10];
+    NSString *js = [NSString stringWithFormat:@"paginate(%d,%d,%d);", (NSUInteger)CGRectGetWidth(mWebView.frame), (NSUInteger)CGRectGetHeight(mWebView.frame)-10, UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)?1:2];
     NSString* result = [mWebView stringByEvaluatingJavaScriptFromString:js];
     mNumberOfPages = [result intValue];
     mCurrentOffset = 0;
@@ -127,7 +127,7 @@
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    [self loadIt:mLoaded];
+    [self paginate:nil];
 }
 
 #pragma UIWebViewDelegate
