@@ -14,29 +14,45 @@ function loadResource(filename, filetype){
     }
     if (typeof fileref!="undefined")
         document.getElementsByTagName("head")[0].appendChild(fileref)
-}
+        }
 
+//position: absolute;
+//
+//width: 1536px; /* should be double of column width's + one gap */
+//height: 100%;
+//
+//padding: 0; margin: 0; /* remove extra spaces */
+//
+//-webkit-columns-count: 2;
+//-webkit-column-width: 384px; /* desired column width */
+//-webkit-column-rule-width: 0px; /* should be defined to prevent browser from change real column width */
+//-webkit-column-gap: 0px; /* should be defined to prevent browser from change real column width */
+//
+//overflow-x: scroll; /* show scroller */
+//overflow-y: hidden;
+//}
+//body { padding: 0; margin: 0; } /* remove extra spaces */
 
 function paginate(desiredWidth, desiredHeight)
 {
-    var gap = 10;
+    var gap = 0;
     var colsPerPage = 1;
-    var bodyID = document.getElementsByTagName('body')[0];
-    var totalHeight = bodyID.offsetHeight;
-    var columnCount = (Math.floor(totalHeight/desiredHeight) + 1);
     
-//    var lastElement;
-//    
-//    for ( lastElement = bodyID.lastChild; !lastElement.offsetTop; lastElement = lastElement.previousElementSibling );
     
-    bodyID.style.paddingBottom = 10; //(optional) prevents clipped letters around the edges
-    bodyID.style.width = desiredWidth * columnCount;
-    bodyID.style.height = desiredHeight;
-    bodyID.style.WebkitColumnCount = columnCount * colsPerPage;
-    bodyID.style.WebkitColumnGap = gap;
-
-    return Math.round(bodyID.scrollWidth / bodyID.clientWidth);
-//    return Math.round(lastElement.offsetTop / bodyID.clientHeight) / colsPerPage;
+    var style = document.createElement("style");
+    style.innerHTML = "html{" + 
+    "width:"+((desiredWidth * 2) + gap)+ "px;" + 
+    "-webkit-column-width:"+Math.floor(desiredWidth / colsPerPage) + "px;" + 
+    "}" +
+    "img{" + 
+    "max-width:"+(Math.floor(desiredWidth / colsPerPage) - 5)+"px;" + 
+    "max-height:"+desiredHeight+"px;" + 
+    "}";
+    
+    alert(style.innerHTML);
+    document.head.appendChild(style);
+    
+    return Math.round(document.body.scrollWidth / document.body.clientWidth);
 }
 
 function scrollToPosition(position)
@@ -48,7 +64,7 @@ function scrollToPosition(position)
 
 function BMMarker()
 {
-
+    
 }
 BMMarker.prototype.selectionCoords = function()
 {
@@ -101,17 +117,17 @@ BMMarker.prototype.getXPath = function(node, path)
 
 BMMarker.prototype.getCoords = function(el) 
 {
-  
-  var _x = 0;
+    
+    var _x = 0;
     var _y = 0;
     while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
         _x += el.offsetLeft - el.scrollLeft;
         _y += el.offsetTop - el.scrollTop;
         el = el.offsetParent;
     }
-  
-  
-  return [_x,_y];
+    
+    
+    return [_x,_y];
 };
 
 var marker = new BMMarker();
