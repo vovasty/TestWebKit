@@ -20,6 +20,8 @@
     IBOutlet UIButton* mButtonUp;
     IBOutlet UIButton* mButtonDown;
     IBOutlet UIButton* mButtonPaginate;
+    
+    NSString* mLoaded;
 }
 
 - (IBAction) pgUp:(id)sender;

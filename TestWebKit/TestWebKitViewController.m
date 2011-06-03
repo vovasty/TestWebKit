@@ -108,10 +108,26 @@
     mButtonPaginate.enabled = NO;
 }
 
+- (void) loadIt:(NSString*) str
+{
+    if ( str != mLoaded )
+    {
+        [mLoaded release];
+        mLoaded = [str retain];
+    }
+    [mWebView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:mLoaded ofType:@"html"] isDirectory:NO]]];
+}
+
 - (IBAction) load:(id)sender
 {
     UIButton* b = (UIButton*)sender;
-    [mWebView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:b.titleLabel.text ofType:@"html"] isDirectory:NO]]];
+    [self loadIt:b.titleLabel.text];
+}
+
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self loadIt:mLoaded];
 }
 
 #pragma UIWebViewDelegate
@@ -126,7 +142,6 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-//    mScrollView.contentSize = [mWebView bounds].size;
     NSString *paginateFunctions = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"paginate" ofType:@"js"] encoding:NSUTF8StringEncoding error:NULL];
     [mWebView stringByEvaluatingJavaScriptFromString:paginateFunctions];
     
@@ -135,5 +150,6 @@
     [mWebView stringByEvaluatingJavaScriptFromString:loadCSS];
     [self reportTimer:@"loading"];
     mButtonPaginate.enabled = YES;
+    [self paginate:nil];
 }
 @end
