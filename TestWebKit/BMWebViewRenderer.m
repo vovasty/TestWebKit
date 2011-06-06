@@ -23,6 +23,7 @@
     mWebView = [[UIWebView alloc] initWithFrame:self.bounds];
     mWebView.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     mWebView.delegate = self;
+    mWebView.dataDetectorTypes = UIDataDetectorTypeNone;
     [self addSubview:mWebView];
     [mWebView release];
     
