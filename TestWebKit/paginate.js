@@ -40,8 +40,9 @@ function paginate(desiredWidth, desiredHeight, colsPerPage)
     var colWidth = Math.floor(desiredWidth / colsPerPage);
     
     var sStyle =  "html{" + 
-    "width:"+((desiredWidth * 2) + gap)+ "px;" + 
+    "width:"+(desiredWidth + gap)+ "px;" + 
     "height:"+desiredHeight+"px;"+
+    "-webkit-columns-count:"+colsPerPage+";"+
     "-webkit-column-width:"+colWidth + "px;" + 
     "}" +
     "img{" + 
@@ -58,8 +59,8 @@ function paginate(desiredWidth, desiredHeight, colsPerPage)
     }
     
     style.innerHTML = sStyle;
-    
-    return Math.round(document.body.scrollWidth / document.body.clientWidth);
+
+    return Math.round(document.body.scrollWidth / window.innerWidth);
 }
 
 function scrollToPosition(position)
