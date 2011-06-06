@@ -60,8 +60,7 @@
 
 - (void) setCurrentPage:(NSUInteger) page
 {
-    NSUInteger offset = page * (NSUInteger)CGRectGetWidth(mWebView.frame);
-    NSString *js = [NSString stringWithFormat:@"scrollToPosition(%u)", offset];
+    NSString *js = [NSString stringWithFormat:@"goToPage(%u)", page];
     NSString* result = [mWebView stringByEvaluatingJavaScriptFromString:js];
     mCurrentPage = page;
 }

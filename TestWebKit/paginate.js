@@ -32,24 +32,27 @@ function loadResource(filename, filetype){
 //overflow-y: hidden;
 //}
 //body { padding: 0; margin: 0; } /* remove extra spaces */
+var gap = 20;
 
 function paginate(desiredWidth, desiredHeight, colsPerPage)
 {
-    var gap = 0;
- 
-    var colWidth = Math.floor(desiredWidth / colsPerPage);
+    var desiredWidth = window.innerWidth;
+    var desiredHeight = window.innerHeight;
+    
+    var colWidth = Math.floor(desiredWidth / colsPerPage) - gap;
     
     var sStyle =  "html{" + 
-    "width:"+(desiredWidth + gap)+ "px;" + 
+    "width:"+(desiredWidth - gap)+ "px;" + 
     "height:"+desiredHeight+"px;"+
     "-webkit-columns-count:"+colsPerPage+";"+
     "-webkit-column-width:"+colWidth + "px;" + 
+    "-webkit-column-gap:"+gap + "px;" + 
     "}" +
     "img{" + 
     "max-width:"+colWidth+"px;" + 
     "max-height:"+Math.floor((desiredHeight*5)/6)+"px;" + 
     "}";
-    
+
     var style = document.getElementById("__pagination");
     if (!style)
     {
@@ -61,6 +64,13 @@ function paginate(desiredWidth, desiredHeight, colsPerPage)
     style.innerHTML = sStyle;
 
     return Math.round(document.body.scrollWidth / window.innerWidth);
+}
+
+function goToPage(page)
+{
+    var prev = document.body.scrollLeft;
+    document.body.scrollLeft=page*window.innerWidth - gap/2;
+    return document.body.scrollLeft != prev;
 }
 
 function scrollToPosition(position)

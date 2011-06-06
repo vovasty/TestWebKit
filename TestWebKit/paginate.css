@@ -13,7 +13,6 @@ html
 {
 margin:0;
 padding:0;
--webkit-column-gap: 0px;
 -webkit-column-rule-width: 0px; /* should be defined to prevent browser from change real column width */
 -webkit-column-gap: 0px; /* should be defined to prevent browser from change real column width */
 
