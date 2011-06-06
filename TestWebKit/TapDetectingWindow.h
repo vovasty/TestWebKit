@@ -11,8 +11,8 @@
 
 @protocol TapDetectingWindowDelegate
 
-- (void)userDidTapWebView:(NSArray *)tapPoint;
-- (void)userDidScrollWebView:(NSArray *)tapPoint;
+- (void)userDidTapWebView:(NSValue *)tapPoint;
+- (void)userDidScrollWebView:(NSValue *)tapPoint;
 
 @end
 

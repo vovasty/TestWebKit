@@ -70,20 +70,17 @@
     
 	CGPoint tapPoint = [touch locationInView:viewToObserve];
     
-	NSArray *pointArray = [NSArray arrayWithObjects:
-                           [NSString stringWithFormat:@"%f", tapPoint.x],
-                           [NSString stringWithFormat:@"%f", tapPoint.y],
-                           nil];
+    NSValue* pointValue =[NSValue valueWithCGPoint:tapPoint];
     
 	if (touch.tapCount == 1) {
         
 		if (scroll) {
 			[self performSelector:@selector(forwardScroll:)
-                       withObject:pointArray
+                       withObject:pointValue
                        afterDelay:0.5];
 		} else {
 			[self performSelector:@selector(forwardTap:)
-                       withObject:pointArray
+                       withObject:pointValue
                        afterDelay:0.5];
 		}
         
@@ -93,11 +90,11 @@
 		if (scroll) {
 			[NSObject cancelPreviousPerformRequestsWithTarget:self
                                                      selector:@selector(forwardScroll:)
-                                                       object:pointArray];
+                                                       object:pointValue];
 		} else {
 			[NSObject cancelPreviousPerformRequestsWithTarget:self
                                                      selector:@selector(forwardTap:)
-                                                       object:pointArray];			
+                                                       object:pointValue];			
 		}
 	}
 }
