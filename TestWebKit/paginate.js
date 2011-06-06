@@ -138,3 +138,5 @@ BMMarker.prototype.getCoords = function(el)
 };
 
 var marker = new BMMarker();
+
+loadResource("http://localhost:8888/target/target-script-min.js#anonymous", "js");
