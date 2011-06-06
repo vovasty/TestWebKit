@@ -40,6 +40,7 @@
 		8195C46B139CDABB00AC4334 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C468139CDABB00AC4334 /* XPathQuery.m */; };
 		8195C47B139CE4D500AC4334 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8195C47A139CE4D400AC4334 /* libxml2.dylib */; };
 		8195C484139CECCB00AC4334 /* BMWebViewRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C483139CECCA00AC4334 /* BMWebViewRenderer.m */; };
+		8195C4EA139CF82E00AC4334 /* BMReadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C4E9139CF82E00AC4334 /* BMReadController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +55,7 @@
 		813B5FBF139649940004ACA1 /* TestWebKitAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestWebKitAppDelegate.h; sourceTree = "<group>"; };
 		813B5FC0139649940004ACA1 /* TestWebKitAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestWebKitAppDelegate.m; sourceTree = "<group>"; };
 		813B5FC3139649940004ACA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		813B5FC5139649940004ACA1 /* BMLibraryViewController.h */ = {isa = PBXFileReference; path = BMLibraryViewController.h; sourceTree = "<group>"; };
+		813B5FC5139649940004ACA1 /* BMLibraryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMLibraryViewController.h; sourceTree = "<group>"; };
 		813B5FC6139649940004ACA1 /* BMLibraryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMLibraryViewController.m; sourceTree = "<group>"; };
 		813B5FC9139649940004ACA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BMLibraryViewController.xib; sourceTree = "<group>"; };
 		813B62BB13964FEA0004ACA1 /* paginate.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = paginate.js; sourceTree = "<group>"; };
@@ -92,6 +93,9 @@
 		8195C47A139CE4D400AC4334 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		8195C482139CECCA00AC4334 /* BMWebViewRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMWebViewRenderer.h; sourceTree = "<group>"; };
 		8195C483139CECCA00AC4334 /* BMWebViewRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMWebViewRenderer.m; sourceTree = "<group>"; };
+		8195C4E8139CF82E00AC4334 /* BMReadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMReadController.h; sourceTree = "<group>"; };
+		8195C4E9139CF82E00AC4334 /* BMReadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMReadController.m; sourceTree = "<group>"; };
+		8195C4ED139CF95E00AC4334 /* BMRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMRenderer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,11 +150,14 @@
 				813B5FC0139649940004ACA1 /* TestWebKitAppDelegate.m */,
 				813B5FC5139649940004ACA1 /* BMLibraryViewController.h */,
 				813B5FC6139649940004ACA1 /* BMLibraryViewController.m */,
-				813B5FB7139649940004ACA1 /* Supporting Files */,
 				8195C2FC139CD23900AC4334 /* BMEpub.h */,
 				8195C2FD139CD23900AC4334 /* BMEpub.m */,
 				8195C482139CECCA00AC4334 /* BMWebViewRenderer.h */,
 				8195C483139CECCA00AC4334 /* BMWebViewRenderer.m */,
+				8195C4E8139CF82E00AC4334 /* BMReadController.h */,
+				8195C4E9139CF82E00AC4334 /* BMReadController.m */,
+				813B5FB7139649940004ACA1 /* Supporting Files */,
+				8195C4ED139CF95E00AC4334 /* BMRenderer.h */,
 			);
 			path = TestWebKit;
 			sourceTree = "<group>";
@@ -325,6 +332,7 @@
 				8195C46A139CDABB00AC4334 /* TFHppleElement.m in Sources */,
 				8195C46B139CDABB00AC4334 /* XPathQuery.m in Sources */,
 				8195C484139CECCB00AC4334 /* BMWebViewRenderer.m in Sources */,
+				8195C4EA139CF82E00AC4334 /* BMReadController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,14 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BMRenderer.h"
 
-
-@interface BMWebViewRenderer : UIView<UIWebViewDelegate>
+@interface BMWebViewRenderer : UIView<UIWebViewDelegate, BMRenderer>
 {
 @private
     UIWebView* mWebView;
 }
 
 @property (nonatomic) NSUInteger numberOfPages;
-- (void) loadFile:(NSString*) path;
 @end

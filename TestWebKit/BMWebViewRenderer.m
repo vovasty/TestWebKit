@@ -15,19 +15,37 @@
 @implementation BMWebViewRenderer
 @synthesize numberOfPages;
 
+
+- (void) setup
+{
+    mWebView = [[UIWebView alloc] initWithFrame:self.bounds];
+    mWebView.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    mWebView.delegate = self;
+    [self addSubview:mWebView];
+    [mWebView release];
+}
+
+- (id) initWithCoder: (NSCoder *) coder
+{
+	if ( (self = [super initWithCoder: coder]) ) 
+    {
+		[self setup];
+	}
+	
+	return self;
+}
+
+
 - (id)initWithFrame:(CGRect)frame 
 {
     if ( (self = [super initWithFrame:frame]) ) 
     {
-        mWebView = [[UIWebView alloc] initWithFrame:self.bounds];
-        mWebView.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        mWebView.delegate = self;
-        [self addSubview:mWebView];
-        [mWebView release];
+        [self setup];
     }
     return self;
 }
 
+#pragma mark BMRenderer;
 - (void) loadFile:(NSString*) path
 {
     [mWebView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path isDirectory:NO]]];
@@ -41,7 +59,7 @@
 #pragma UIWebViewDelegate
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    mWebView.hidden = YES;
+//    mWebView.hidden = YES;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -75,7 +93,7 @@
 //    mButtonDown.enabled = YES;
 //    mButtonUp.enabled = YES;
 //    mButtonPaginate.enabled = NO;
-    mWebView.hidden = NO;
+//    mWebView.hidden = NO;
 }
 
 

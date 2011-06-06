@@ -8,6 +8,8 @@
 
 #import "BMLibraryViewController.h"
 #import "FileSystemUtilities.h"
+#import "BMReadController.h"
+#import "BMEpub.h"
 
 @implementation BMLibraryViewController
 
@@ -80,14 +82,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    BMReadController* readController = [[BMReadController alloc] init];
+    [self.navigationController pushViewController:readController animated:YES];
+    NSString* path = [KADocumentsDirectory() stringByAppendingPathComponent:[mFiles objectAtIndex:indexPath.row]];
+    BMEpub* book = [[BMEpub alloc] initWithFile:path];
+    readController.book = book;
+    [book release];
+    [readController release];
 }
 
 @end
