@@ -84,25 +84,31 @@
     currentItemIndex = index;
 }
 
-#pragma mark BMRendererDelegate
-- (void)renderer:(BMRenderer*)renderer contentDidRendered:(BOOL) flag
+- (void) updatePageInfo
 {
-    mPageInfo.text = [NSString stringWithFormat:@"%d/%d %@", 1, renderer.numberOfPages, [[[book.spine objectAtIndex:self.currentItemIndex] valueForKey:@"path"] lastPathComponent]];
+    mPageInfo.text = [NSString stringWithFormat:@"%d/%d %@", mRenderer.currentPage+1, mRenderer.numberOfPages, [[[book.spine objectAtIndex:self.currentItemIndex] valueForKey:@"path"] lastPathComponent]];
 }
 
+#pragma mark BMRendererDelegate
 - (void)renderer:(BMRenderer*)renderer didTappedAtPoint:(CGPoint) point
 {
     if ( point.x < kTapMargin )
     {
         if ( mRenderer.currentPage )
+        {
             mRenderer.currentPage = mRenderer.currentPage - 1;
+            [self updatePageInfo];
+        }
         else if ( self.currentItemIndex )
             self.currentItemIndex = self.currentItemIndex - 1;
     }
     else if ( (CGRectGetWidth(self.view.bounds) - point.x) < kTapMargin )
     {
         if ( (mRenderer.currentPage + 1) < mRenderer.numberOfPages )
+        {
             mRenderer.currentPage = mRenderer.currentPage + 1;
+            [self updatePageInfo];
+        }
         else if ( self.currentItemIndex < [book.spine count] )
             self.currentItemIndex = self.currentItemIndex + 1;
     }
@@ -112,4 +118,16 @@
         [self.navigationController setToolbarHidden:self.navigationController.navigationBarHidden animated:YES];
     }
 }
+
+- (void)renderer:(BMRenderer*)renderer willStartRender:(BOOL) flag
+{
+    self.view.hidden = YES;
+}
+
+- (void)renderer:(BMRenderer*)renderer didFinishRender:(BOOL) flag
+{
+    [self updatePageInfo];
+    self.view.hidden = NO;
+}
+
 @end

@@ -10,8 +10,9 @@
 
 @class BMRenderer;
 @protocol BMRendererDelegate <NSObject>
-- (void)renderer:(BMRenderer*)renderer contentDidRendered:(BOOL) flag;
 - (void)renderer:(BMRenderer*)renderer didTappedAtPoint:(CGPoint) point;
+- (void)renderer:(BMRenderer*)renderer willStartRender:(BOOL) flag;
+- (void)renderer:(BMRenderer*)renderer didFinishRender:(BOOL) flag;
 @end
 
 @interface BMRenderer:UIView

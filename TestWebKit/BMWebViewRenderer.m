@@ -82,7 +82,7 @@
 #pragma UIWebViewDelegate
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-//    mWebView.hidden = YES;
+    [self.delegate renderer:self willStartRender:YES];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -135,7 +135,7 @@
     NSString* result = [mWebView stringByEvaluatingJavaScriptFromString:js];
     self.numberOfPages = [result intValue];
     self.currentPage = 0;
-    [self.delegate renderer:self contentDidRendered:YES];
+    [self.delegate renderer:self didFinishRender:YES];
 }
 
 - (void) sendTapEvent:(NSValue*) point
