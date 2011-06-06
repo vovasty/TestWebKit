@@ -34,7 +34,9 @@
     }
     
     NSDictionary* firstItem = [book.spine objectAtIndex:0];
-    [mRenderer loadFile:[firstItem objectForKey:@"path"]];
+    NSString *path = [firstItem objectForKey:@"path"];
+    if ( path )
+        [mRenderer loadFile:[firstItem objectForKey:@"path"]];
 }
 
 #pragma mark - View lifecycle

@@ -7,6 +7,7 @@
 //
 
 #import "BMWebViewRenderer.h"
+#import "TapDetectingWindow.h"
 
 @interface BMWebViewRenderer (Private) 
 - (void) paginate;
@@ -23,6 +24,10 @@
     mWebView.delegate = self;
     [self addSubview:mWebView];
     [mWebView release];
+    
+    mWindow = (TapDetectingWindow *)[[UIApplication sharedApplication].windows objectAtIndex:0];
+	mWindow.viewToObserve = mWebView;
+	mWindow.controllerThatObserves = self;
 }
 
 - (id) initWithCoder: (NSCoder *) coder
@@ -53,6 +58,9 @@
 
 - (void)dealloc
 {
+    mWindow = (TapDetectingWindow *)[[UIApplication sharedApplication].windows objectAtIndex:0];
+	mWindow.viewToObserve = nil;
+	mWindow.controllerThatObserves = nil;
     [super dealloc];
 }
 
@@ -73,6 +81,29 @@
     [self paginate];
     [self.delegate renderer:self contentDidRendered:YES];
 }
+
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request 
+ navigationType:(UIWebViewNavigationType)navigationType { 
+    return YES; 
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error { 
+}
+
+#pragma mark -
+#pragma mark TapDetectingWindowDelegate methods
+
+- (void)userDidTapWebView:(NSArray *)tapPoint {
+	// x and y points are NSStrings
+	NSLog(@"tap at x = %@, y = %@", [tapPoint objectAtIndex:0], [tapPoint objectAtIndex:1]);
+}
+
+- (void)userDidScrollWebView:(NSArray *)tapPoint {
+	// x and y points are NSStrings
+	NSLog(@"scroll at x = %@, y = %@", [tapPoint objectAtIndex:0], [tapPoint objectAtIndex:1]);
+}
+
 
 - (void) layoutSubviews
 {
@@ -96,6 +127,4 @@
 //    mButtonPaginate.enabled = NO;
 //    mWebView.hidden = NO;
 }
-
-
 @end

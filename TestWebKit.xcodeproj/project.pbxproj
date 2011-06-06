@@ -42,6 +42,7 @@
 		8195C484139CECCB00AC4334 /* BMWebViewRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C483139CECCA00AC4334 /* BMWebViewRenderer.m */; };
 		8195C4EA139CF82E00AC4334 /* BMReadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C4E9139CF82E00AC4334 /* BMReadController.m */; };
 		8195C4EF139D022E00AC4334 /* BMRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C4EE139D022D00AC4334 /* BMRenderer.m */; };
+		8195C4F5139D146600AC4334 /* TapDetectingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C4F4139D146300AC4334 /* TapDetectingWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,8 @@
 		8195C4E9139CF82E00AC4334 /* BMReadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMReadController.m; sourceTree = "<group>"; };
 		8195C4ED139CF95E00AC4334 /* BMRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMRenderer.h; sourceTree = "<group>"; };
 		8195C4EE139D022D00AC4334 /* BMRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMRenderer.m; sourceTree = "<group>"; };
+		8195C4F3139D146200AC4334 /* TapDetectingWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapDetectingWindow.h; sourceTree = "<group>"; };
+		8195C4F4139D146300AC4334 /* TapDetectingWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +164,8 @@
 				813B5FB7139649940004ACA1 /* Supporting Files */,
 				8195C4ED139CF95E00AC4334 /* BMRenderer.h */,
 				8195C4EE139D022D00AC4334 /* BMRenderer.m */,
+				8195C4F3139D146200AC4334 /* TapDetectingWindow.h */,
+				8195C4F4139D146300AC4334 /* TapDetectingWindow.m */,
 			);
 			path = TestWebKit;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				8195C484139CECCB00AC4334 /* BMWebViewRenderer.m in Sources */,
 				8195C4EA139CF82E00AC4334 /* BMReadController.m in Sources */,
 				8195C4EF139D022E00AC4334 /* BMRenderer.m in Sources */,
+				8195C4F5139D146600AC4334 /* TapDetectingWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
