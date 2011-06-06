@@ -2,7 +2,7 @@
 
 Bookmate = function()
 {
-    var gap = 100;
+    var gap = 20;
 
     this.paginate = function(colsPerPage)
     {
@@ -21,7 +21,11 @@ Bookmate = function()
         "img{" + 
         "max-width:"+colWidth+"px;" + 
         "max-height:"+Math.floor((desiredHeight*5)/6)+"px;" + 
+        "}"+
+        "body{" + 
+        "padding-left:"+gap+"px;" + 
         "}";
+
         
         var style = document.getElementById("__pagination");
         if (!style)
@@ -39,7 +43,7 @@ Bookmate = function()
     this.setPage = function(page)
     {
         var prev = document.body.scrollLeft;
-        document.body.scrollLeft=page*window.innerWidth - gap/2;
+        document.body.scrollLeft=page*window.innerWidth;
         return document.body.scrollLeft != prev;
     }
     
