@@ -60,22 +60,22 @@
         
         NSArray *rootFiles  = [manifestParser search:@"//container/rootfiles/rootfile"];
         TFHppleElement* contentElement = [rootFiles objectAtIndex:0];
-        NSString *contentPath = [mPathExtracted stringByAppendingPathComponent:[contentElement objectForKey:@"full-path"]];
+        NSString *contentFilePath = [mPathExtracted stringByAppendingPathComponent:[contentElement objectForKey:@"full-path"]];
 
         [manifestData release];
         [manifestParser release];
         
-        NSData *contentData = [[NSData alloc] initWithContentsOfFile:contentPath];
+        NSData *contentData = [[NSData alloc] initWithContentsOfFile:contentFilePath];
         TFHpple* contentParser = [[TFHpple alloc] initWithHTMLData:contentData];
         NSArray* manifestItems = [contentParser search:@"//package/manifest/item"];
         
         mManifest = [[NSMutableDictionary alloc] initWithCapacity:[manifestItems count]];
-        
+        NSString* contentPath = [contentFilePath substringWithRange:NSMakeRange(0, [contentFilePath rangeOfString:contentFilePath.lastPathComponent].location)];
         for ( TFHppleElement* item in manifestItems )
         {
             NSMutableDictionary* itemDict = [NSMutableDictionary dictionaryWithCapacity:2];
             [itemDict setObject:[item objectForKey:@"id"] forKey:@"id"];
-            [itemDict setObject:[mPathExtracted stringByAppendingPathComponent:[item objectForKey:@"href"]] forKey:@"path"];
+            [itemDict setObject:[contentPath stringByAppendingString:[item objectForKey:@"href"]] forKey:@"path"];
             [mManifest setObject:itemDict forKey:[item objectForKey:@"id"]];
         }
         
