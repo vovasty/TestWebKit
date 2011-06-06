@@ -27,6 +27,18 @@
 		813B68561396AE060004ACA1 /* lrg.html in Resources */ = {isa = PBXBuildFile; fileRef = 813B68531396AE060004ACA1 /* lrg.html */; };
 		813B68571396AE060004ACA1 /* med.html in Resources */ = {isa = PBXBuildFile; fileRef = 813B68541396AE060004ACA1 /* med.html */; };
 		813B68581396AE060004ACA1 /* sm.html in Resources */ = {isa = PBXBuildFile; fileRef = 813B68551396AE060004ACA1 /* sm.html */; };
+		8195C2FE139CD23900AC4334 /* BMEpub.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C2FD139CD23900AC4334 /* BMEpub.m */; };
+		8195C300139CD35D00AC4334 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8195C2FF139CD35D00AC4334 /* libz.dylib */; };
+		8195C303139CD41A00AC4334 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8195C302139CD41A00AC4334 /* ZipArchive.mm */; };
+		8195C311139CD43300AC4334 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 8195C307139CD43300AC4334 /* ioapi.c */; };
+		8195C313139CD43300AC4334 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 8195C30A139CD43300AC4334 /* mztools.c */; };
+		8195C314139CD43300AC4334 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 8195C30C139CD43300AC4334 /* unzip.c */; };
+		8195C315139CD43300AC4334 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 8195C30E139CD43300AC4334 /* zip.c */; };
+		8195C319139CD46600AC4334 /* FileSystemUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C318139CD46600AC4334 /* FileSystemUtilities.m */; };
+		8195C469139CDABB00AC4334 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C464139CDABB00AC4334 /* TFHpple.m */; };
+		8195C46A139CDABB00AC4334 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C466139CDABB00AC4334 /* TFHppleElement.m */; };
+		8195C46B139CDABB00AC4334 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C468139CDABB00AC4334 /* XPathQuery.m */; };
+		8195C47B139CE4D500AC4334 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8195C47A139CE4D400AC4334 /* libxml2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +66,29 @@
 		813B68531396AE060004ACA1 /* lrg.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = lrg.html; sourceTree = "<group>"; };
 		813B68541396AE060004ACA1 /* med.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = med.html; sourceTree = "<group>"; };
 		813B68551396AE060004ACA1 /* sm.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sm.html; sourceTree = "<group>"; };
+		8195C2FC139CD23900AC4334 /* BMEpub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEpub.h; sourceTree = "<group>"; };
+		8195C2FD139CD23900AC4334 /* BMEpub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMEpub.m; sourceTree = "<group>"; };
+		8195C2FF139CD35D00AC4334 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		8195C301139CD41A00AC4334 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZipArchive.h; path = Library/ziparchive/ZipArchive.h; sourceTree = SOURCE_ROOT; };
+		8195C302139CD41A00AC4334 /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ZipArchive.mm; path = Library/ziparchive/ZipArchive.mm; sourceTree = SOURCE_ROOT; };
+		8195C306139CD43300AC4334 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = crypt.h; path = Library/ziparchive/minizip/crypt.h; sourceTree = SOURCE_ROOT; };
+		8195C307139CD43300AC4334 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = Library/ziparchive/minizip/ioapi.c; sourceTree = SOURCE_ROOT; };
+		8195C308139CD43300AC4334 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ioapi.h; path = Library/ziparchive/minizip/ioapi.h; sourceTree = SOURCE_ROOT; };
+		8195C30A139CD43300AC4334 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mztools.c; path = Library/ziparchive/minizip/mztools.c; sourceTree = SOURCE_ROOT; };
+		8195C30B139CD43300AC4334 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mztools.h; path = Library/ziparchive/minizip/mztools.h; sourceTree = SOURCE_ROOT; };
+		8195C30C139CD43300AC4334 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = Library/ziparchive/minizip/unzip.c; sourceTree = SOURCE_ROOT; };
+		8195C30D139CD43300AC4334 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = unzip.h; path = Library/ziparchive/minizip/unzip.h; sourceTree = SOURCE_ROOT; };
+		8195C30E139CD43300AC4334 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zip.c; path = Library/ziparchive/minizip/zip.c; sourceTree = SOURCE_ROOT; };
+		8195C30F139CD43300AC4334 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zip.h; path = Library/ziparchive/minizip/zip.h; sourceTree = SOURCE_ROOT; };
+		8195C317139CD46600AC4334 /* FileSystemUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileSystemUtilities.h; path = Library/FileSystemUtilities.h; sourceTree = SOURCE_ROOT; };
+		8195C318139CD46600AC4334 /* FileSystemUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FileSystemUtilities.m; path = Library/FileSystemUtilities.m; sourceTree = SOURCE_ROOT; };
+		8195C463139CDABB00AC4334 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHpple.h; path = Library/hpple/TFHpple.h; sourceTree = SOURCE_ROOT; };
+		8195C464139CDABB00AC4334 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHpple.m; path = Library/hpple/TFHpple.m; sourceTree = SOURCE_ROOT; };
+		8195C465139CDABB00AC4334 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHppleElement.h; path = Library/hpple/TFHppleElement.h; sourceTree = SOURCE_ROOT; };
+		8195C466139CDABB00AC4334 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHppleElement.m; path = Library/hpple/TFHppleElement.m; sourceTree = SOURCE_ROOT; };
+		8195C467139CDABB00AC4334 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPathQuery.h; path = Library/hpple/XPathQuery.h; sourceTree = SOURCE_ROOT; };
+		8195C468139CDABB00AC4334 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPathQuery.m; path = Library/hpple/XPathQuery.m; sourceTree = SOURCE_ROOT; };
+		8195C47A139CE4D400AC4334 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8195C47B139CE4D500AC4334 /* libxml2.dylib in Frameworks */,
+				8195C300139CD35D00AC4334 /* libz.dylib in Frameworks */,
 				813B5FB1139649940004ACA1 /* UIKit.framework in Frameworks */,
 				813B5FB3139649940004ACA1 /* Foundation.framework in Frameworks */,
 				813B5FB5139649940004ACA1 /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +110,7 @@
 		813B5FA1139649930004ACA1 = {
 			isa = PBXGroup;
 			children = (
+				8195C47A139CE4D400AC4334 /* libxml2.dylib */,
 				813B5FB6139649940004ACA1 /* TestWebKit */,
 				813B5FAF139649940004ACA1 /* Frameworks */,
 				813B5FAD139649940004ACA1 /* Products */,
@@ -100,6 +138,7 @@
 		813B5FB6139649940004ACA1 /* TestWebKit */ = {
 			isa = PBXGroup;
 			children = (
+				8195C316139CD44700AC4334 /* Library */,
 				813B5FBF139649940004ACA1 /* TestWebKitAppDelegate.h */,
 				813B5FC0139649940004ACA1 /* TestWebKitAppDelegate.m */,
 				813B5FC2139649940004ACA1 /* MainWindow.xib */,
@@ -107,6 +146,8 @@
 				813B5FC6139649940004ACA1 /* TestWebKitViewController.m */,
 				813B5FC8139649940004ACA1 /* TestWebKitViewController.xib */,
 				813B5FB7139649940004ACA1 /* Supporting Files */,
+				8195C2FC139CD23900AC4334 /* BMEpub.h */,
+				8195C2FD139CD23900AC4334 /* BMEpub.m */,
 			);
 			path = TestWebKit;
 			sourceTree = "<group>";
@@ -138,6 +179,57 @@
 				813B6840139693EA0004ACA1 /* wide.jpg */,
 			);
 			path = html;
+			sourceTree = "<group>";
+		};
+		8195C2E6139CD13100AC4334 /* ziparchive */ = {
+			isa = PBXGroup;
+			children = (
+				8195C304139CD42000AC4334 /* minizip */,
+				8195C301139CD41A00AC4334 /* ZipArchive.h */,
+				8195C302139CD41A00AC4334 /* ZipArchive.mm */,
+			);
+			name = ziparchive;
+			sourceTree = "<group>";
+		};
+		8195C304139CD42000AC4334 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				8195C306139CD43300AC4334 /* crypt.h */,
+				8195C307139CD43300AC4334 /* ioapi.c */,
+				8195C308139CD43300AC4334 /* ioapi.h */,
+				8195C30A139CD43300AC4334 /* mztools.c */,
+				8195C30B139CD43300AC4334 /* mztools.h */,
+				8195C30C139CD43300AC4334 /* unzip.c */,
+				8195C30D139CD43300AC4334 /* unzip.h */,
+				8195C30E139CD43300AC4334 /* zip.c */,
+				8195C30F139CD43300AC4334 /* zip.h */,
+			);
+			name = minizip;
+			sourceTree = "<group>";
+		};
+		8195C316139CD44700AC4334 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				8195C462139CDA9000AC4334 /* hpple */,
+				8195C317139CD46600AC4334 /* FileSystemUtilities.h */,
+				8195C318139CD46600AC4334 /* FileSystemUtilities.m */,
+				8195C2E6139CD13100AC4334 /* ziparchive */,
+				8195C2FF139CD35D00AC4334 /* libz.dylib */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		8195C462139CDA9000AC4334 /* hpple */ = {
+			isa = PBXGroup;
+			children = (
+				8195C463139CDABB00AC4334 /* TFHpple.h */,
+				8195C464139CDABB00AC4334 /* TFHpple.m */,
+				8195C465139CDABB00AC4334 /* TFHppleElement.h */,
+				8195C466139CDABB00AC4334 /* TFHppleElement.m */,
+				8195C467139CDABB00AC4334 /* XPathQuery.h */,
+				8195C468139CDABB00AC4334 /* XPathQuery.m */,
+			);
+			name = hpple;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +309,16 @@
 				813B5FC1139649940004ACA1 /* TestWebKitAppDelegate.m in Sources */,
 				813B5FC7139649940004ACA1 /* TestWebKitViewController.m in Sources */,
 				813B62BC13964FEA0004ACA1 /* paginate.js in Sources */,
+				8195C2FE139CD23900AC4334 /* BMEpub.m in Sources */,
+				8195C303139CD41A00AC4334 /* ZipArchive.mm in Sources */,
+				8195C311139CD43300AC4334 /* ioapi.c in Sources */,
+				8195C313139CD43300AC4334 /* mztools.c in Sources */,
+				8195C314139CD43300AC4334 /* unzip.c in Sources */,
+				8195C315139CD43300AC4334 /* zip.c in Sources */,
+				8195C319139CD46600AC4334 /* FileSystemUtilities.m in Sources */,
+				8195C469139CDABB00AC4334 /* TFHpple.m in Sources */,
+				8195C46A139CDABB00AC4334 /* TFHppleElement.m in Sources */,
+				8195C46B139CDABB00AC4334 /* XPathQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +364,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -277,6 +380,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
@@ -333,6 +437,7 @@
 				813B5FCF139649940004ACA1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
