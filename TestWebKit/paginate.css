@@ -26,6 +26,8 @@ body { margin: 0; } /* remove extra spaces */
 img 
 { 
 -webkit-column-break-before : auto;
--webkit-column-break-after : always ;
+-webkit-column-break-after : auto ;
 -webkit-column-span: all;
+width:auto !important;
+height:auto !important;
 }
