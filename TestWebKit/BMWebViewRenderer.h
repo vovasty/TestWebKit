@@ -15,5 +15,6 @@
 @private
     UIWebView* mWebView;
     TapDetectingWindow* mWindow;
+    NSUInteger mCurrentPage;
 }
 @end

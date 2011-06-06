@@ -17,4 +17,5 @@
 }
 
 @property(nonatomic, retain) BMEpub* book;
+@property(nonatomic) NSUInteger currentItemIndex;
 @end

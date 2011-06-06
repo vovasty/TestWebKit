@@ -11,6 +11,7 @@
 
 @interface BMWebViewRenderer (Private) 
 - (void) paginate;
+- (void) sendTapEvent:(NSValue*) point;
 @end
 
 @implementation BMWebViewRenderer
@@ -56,6 +57,20 @@
     [mWebView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path isDirectory:NO]]];
 }
 
+
+- (void) setCurrentPage:(NSUInteger) page
+{
+    NSUInteger offset = page * (NSUInteger)CGRectGetWidth(mWebView.frame);
+    NSString *js = [NSString stringWithFormat:@"scrollToPosition(%u)", offset];
+    NSString* result = [mWebView stringByEvaluatingJavaScriptFromString:js];
+    mCurrentPage = page;
+}
+
+- (NSUInteger) currentPage
+{
+    return mCurrentPage;
+}
+
 - (void)dealloc
 {
     mWindow = (TapDetectingWindow *)[[UIApplication sharedApplication].windows objectAtIndex:0];
@@ -79,12 +94,12 @@
     
     [mWebView stringByEvaluatingJavaScriptFromString:loadCSS];
     [self paginate];
-    [self.delegate renderer:self contentDidRendered:YES];
 }
 
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request 
  navigationType:(UIWebViewNavigationType)navigationType { 
+    [NSTimer cancelPreviousPerformRequestsWithTarget:self];
     return YES; 
 }
 
@@ -94,14 +109,14 @@
 #pragma mark -
 #pragma mark TapDetectingWindowDelegate methods
 
-- (void)userDidTapWebView:(NSArray *)tapPoint {
-	// x and y points are NSStrings
-	NSLog(@"tap at x = %@, y = %@", [tapPoint objectAtIndex:0], [tapPoint objectAtIndex:1]);
+- (void)userDidTapWebView:(NSValue *)tapPoint 
+{
+    [NSTimer cancelPreviousPerformRequestsWithTarget:self];
+//    [self performSelector:@selector(sendTapEvent:) withObject:tapPoint afterDelay:.5f];
+    [self sendTapEvent:tapPoint];
 }
 
-- (void)userDidScrollWebView:(NSArray *)tapPoint {
-	// x and y points are NSStrings
-	NSLog(@"scroll at x = %@, y = %@", [tapPoint objectAtIndex:0], [tapPoint objectAtIndex:1]);
+- (void)userDidScrollWebView:(NSValue *)tapPoint {
 }
 
 
@@ -119,12 +134,12 @@
     NSString *js = [NSString stringWithFormat:@"paginate(%d,%d,%d);", (NSUInteger)CGRectGetWidth(mWebView.frame), (NSUInteger)CGRectGetHeight(mWebView.frame)-10, UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)?1:2];
     NSString* result = [mWebView stringByEvaluatingJavaScriptFromString:js];
     self.numberOfPages = [result intValue];
-//    mCurrentOffset = 0;
-//    mCurrentPage = 1;
-//    
-//    mButtonDown.enabled = YES;
-//    mButtonUp.enabled = YES;
-//    mButtonPaginate.enabled = NO;
-//    mWebView.hidden = NO;
+    self.currentPage = 0;
+    [self.delegate renderer:self contentDidRendered:YES];
+}
+
+- (void) sendTapEvent:(NSValue*) point
+{
+    [self.delegate renderer:self didTappedAtPoint:[point CGPointValue]];
 }
 @end

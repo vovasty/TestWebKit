@@ -11,10 +11,12 @@
 @class BMRenderer;
 @protocol BMRendererDelegate <NSObject>
 - (void)renderer:(BMRenderer*)renderer contentDidRendered:(BOOL) flag;
+- (void)renderer:(BMRenderer*)renderer didTappedAtPoint:(CGPoint) point;
 @end
 
 @interface BMRenderer:UIView
 - (void) loadFile:(NSString*) path;
 @property (nonatomic, assign) id<BMRendererDelegate> delegate;
 @property (nonatomic) NSUInteger numberOfPages;
+@property (nonatomic) NSUInteger currentPage;
 @end

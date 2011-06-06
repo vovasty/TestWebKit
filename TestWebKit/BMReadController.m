@@ -10,8 +10,10 @@
 #import "BMWebViewRenderer.h"
 #import "BMEpub.h"
 
+#define kTapMargin 50.f
+
 @implementation BMReadController
-@synthesize book;
+@synthesize book, currentItemIndex;
 
 -(void) releaseTopLevelObjects
 {
@@ -32,11 +34,7 @@
         [book release];
         book = [aBook retain];
     }
-    
-    NSDictionary* firstItem = [book.spine objectAtIndex:0];
-    NSString *path = [firstItem objectForKey:@"path"];
-    if ( path )
-        [mRenderer loadFile:[firstItem objectForKey:@"path"]];
+    self.currentItemIndex = 0;
 }
 
 #pragma mark - View lifecycle
@@ -76,9 +74,42 @@
 	return YES;
 }
 
+#pragma mark Private
+- (void) setCurrentItemIndex:(NSUInteger)index
+{
+    NSDictionary* item = [book.spine objectAtIndex:index];
+    NSString *path = [item objectForKey:@"path"];
+    if ( path )
+        [mRenderer loadFile:path];
+    currentItemIndex = index;
+}
+
 #pragma mark BMRendererDelegate
 - (void)renderer:(BMRenderer*)renderer contentDidRendered:(BOOL) flag
 {
-    mPageInfo.text = [NSString stringWithFormat:@"%@ %d %@ %d", NSLocalizedString(@"page", nil), 1, NSLocalizedString(@"of", nil), renderer.numberOfPages];
+    mPageInfo.text = [NSString stringWithFormat:@"%d/%d %@", 1, renderer.numberOfPages, [[[book.spine objectAtIndex:self.currentItemIndex] valueForKey:@"path"] lastPathComponent]];
+}
+
+- (void)renderer:(BMRenderer*)renderer didTappedAtPoint:(CGPoint) point
+{
+    if ( point.x < kTapMargin )
+    {
+        if ( mRenderer.currentPage )
+            mRenderer.currentPage = mRenderer.currentPage - 1;
+        else if ( self.currentItemIndex )
+            self.currentItemIndex = self.currentItemIndex - 1;
+    }
+    else if ( (CGRectGetWidth(self.view.bounds) - point.x) < kTapMargin )
+    {
+        if ( (mRenderer.currentPage + 1) < mRenderer.numberOfPages )
+            mRenderer.currentPage = mRenderer.currentPage + 1;
+        else if ( self.currentItemIndex < [book.spine count] )
+            self.currentItemIndex = self.currentItemIndex + 1;
+    }
+    else
+    {
+        [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
+        [self.navigationController setToolbarHidden:self.navigationController.navigationBarHidden animated:YES];
+    }
 }
 @end

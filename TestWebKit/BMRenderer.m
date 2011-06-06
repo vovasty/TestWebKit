@@ -10,6 +10,7 @@
 
 @implementation BMRenderer
 @synthesize delegate, numberOfPages;
+@dynamic currentPage;
 
 - (void) loadFile:(NSString*) path
 {
