@@ -60,7 +60,7 @@
 
 - (void) setCurrentPage:(NSUInteger) page
 {
-    NSString *js = [NSString stringWithFormat:@"goToPage(%u)", page];
+    NSString *js = [NSString stringWithFormat:@"__bm.setPage(%u)", page];
     NSString* result = [mWebView stringByEvaluatingJavaScriptFromString:js];
     mCurrentPage = page;
 }
@@ -89,7 +89,7 @@
     NSString *paginateFunctions = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"paginate" ofType:@"js"] encoding:NSUTF8StringEncoding error:NULL];
     [mWebView stringByEvaluatingJavaScriptFromString:paginateFunctions];
     
-    NSString *loadCSS = [NSString stringWithFormat:@"loadResource('%@','css');", [[NSBundle mainBundle] pathForResource:@"paginate" ofType:@"css"]];
+    NSString *loadCSS = [NSString stringWithFormat:@"__bm.loadResource('%@','css');", [[NSBundle mainBundle] pathForResource:@"paginate" ofType:@"css"]];
     
     [mWebView stringByEvaluatingJavaScriptFromString:loadCSS];
     [self paginate];
@@ -130,7 +130,7 @@
 #pragma mark Private
 - (void) paginate;
 {
-    NSString *js = [NSString stringWithFormat:@"paginate(%d,%d,%d);", (NSUInteger)CGRectGetWidth(mWebView.frame), (NSUInteger)CGRectGetHeight(mWebView.frame)-10, UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)?1:2];
+    NSString *js = [NSString stringWithFormat:@"__bm.paginate(%d);", UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)?1:2];
     NSString* result = [mWebView stringByEvaluatingJavaScriptFromString:js];
     self.numberOfPages = [result intValue];
     self.currentPage = 0;
