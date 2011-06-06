@@ -38,6 +38,8 @@
         if ([@"epub" isEqualToString:fileName.pathExtension])
             [mFiles addObject:fileName];
 	}
+    
+    self.title = @"Library";
 }
 
 - (void)viewWillAppear:(BOOL)animated

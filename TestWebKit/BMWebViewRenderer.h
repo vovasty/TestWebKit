@@ -9,11 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "BMRenderer.h"
 
-@interface BMWebViewRenderer : UIView<UIWebViewDelegate, BMRenderer>
+@interface BMWebViewRenderer : BMRenderer<UIWebViewDelegate>
 {
 @private
     UIWebView* mWebView;
 }
-
-@property (nonatomic) NSUInteger numberOfPages;
 @end

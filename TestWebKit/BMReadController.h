@@ -10,9 +10,10 @@
 #import "BMRenderer.h"
 
 @class BMEpub;
-@interface BMReadController : UIViewController 
+@interface BMReadController : UIViewController<BMRendererDelegate>
 {
-    id<BMRenderer> mRenderer;
+    BMRenderer* mRenderer;
+    UILabel* mPageInfo;
 }
 
 @property(nonatomic, retain) BMEpub* book;

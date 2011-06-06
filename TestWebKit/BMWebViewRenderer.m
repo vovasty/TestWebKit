@@ -71,6 +71,7 @@
     
     [mWebView stringByEvaluatingJavaScriptFromString:loadCSS];
     [self paginate];
+    [self.delegate renderer:self contentDidRendered:YES];
 }
 
 - (void) layoutSubviews
