@@ -21,7 +21,7 @@ overflow-y: hidden;
 
 }
 
-body { padding: 0; margin: 0; } /* remove extra spaces */
+body { margin: 0; } /* remove extra spaces */
 
 img 
 { 
