@@ -14,8 +14,8 @@
 		813B5FBE139649940004ACA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 813B5FBD139649940004ACA1 /* main.m */; };
 		813B5FC1139649940004ACA1 /* TestWebKitAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 813B5FC0139649940004ACA1 /* TestWebKitAppDelegate.m */; };
 		813B5FC4139649940004ACA1 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 813B5FC2139649940004ACA1 /* MainWindow.xib */; };
-		813B5FC7139649940004ACA1 /* TestWebKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 813B5FC6139649940004ACA1 /* TestWebKitViewController.m */; };
-		813B5FCA139649940004ACA1 /* TestWebKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 813B5FC8139649940004ACA1 /* TestWebKitViewController.xib */; };
+		813B5FC7139649940004ACA1 /* BMLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 813B5FC6139649940004ACA1 /* BMLibraryViewController.m */; };
+		813B5FCA139649940004ACA1 /* BMLibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 813B5FC8139649940004ACA1 /* BMLibraryViewController.xib */; };
 		813B62BC13964FEA0004ACA1 /* paginate.js in Sources */ = {isa = PBXBuildFile; fileRef = 813B62BB13964FEA0004ACA1 /* paginate.js */; };
 		813B62BD13966E2A0004ACA1 /* paginate.js in Resources */ = {isa = PBXBuildFile; fileRef = 813B62BB13964FEA0004ACA1 /* paginate.js */; };
 		813B62BF139670400004ACA1 /* paginate.css in Resources */ = {isa = PBXBuildFile; fileRef = 813B62BE139670400004ACA1 /* paginate.css */; };
@@ -39,6 +39,7 @@
 		8195C46A139CDABB00AC4334 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C466139CDABB00AC4334 /* TFHppleElement.m */; };
 		8195C46B139CDABB00AC4334 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C468139CDABB00AC4334 /* XPathQuery.m */; };
 		8195C47B139CE4D500AC4334 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8195C47A139CE4D400AC4334 /* libxml2.dylib */; };
+		8195C484139CECCB00AC4334 /* BMWebViewRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C483139CECCA00AC4334 /* BMWebViewRenderer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,9 +54,9 @@
 		813B5FBF139649940004ACA1 /* TestWebKitAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestWebKitAppDelegate.h; sourceTree = "<group>"; };
 		813B5FC0139649940004ACA1 /* TestWebKitAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestWebKitAppDelegate.m; sourceTree = "<group>"; };
 		813B5FC3139649940004ACA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		813B5FC5139649940004ACA1 /* TestWebKitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestWebKitViewController.h; sourceTree = "<group>"; };
-		813B5FC6139649940004ACA1 /* TestWebKitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestWebKitViewController.m; sourceTree = "<group>"; };
-		813B5FC9139649940004ACA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TestWebKitViewController.xib; sourceTree = "<group>"; };
+		813B5FC5139649940004ACA1 /* BMLibraryViewController.h */ = {isa = PBXFileReference; path = BMLibraryViewController.h; sourceTree = "<group>"; };
+		813B5FC6139649940004ACA1 /* BMLibraryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMLibraryViewController.m; sourceTree = "<group>"; };
+		813B5FC9139649940004ACA1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BMLibraryViewController.xib; sourceTree = "<group>"; };
 		813B62BB13964FEA0004ACA1 /* paginate.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = paginate.js; sourceTree = "<group>"; };
 		813B62BE139670400004ACA1 /* paginate.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = paginate.css; sourceTree = "<group>"; };
 		813B683D139693EA0004ACA1 /* large.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = large.jpg; sourceTree = "<group>"; };
@@ -89,6 +90,8 @@
 		8195C467139CDABB00AC4334 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPathQuery.h; path = Library/hpple/XPathQuery.h; sourceTree = SOURCE_ROOT; };
 		8195C468139CDABB00AC4334 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPathQuery.m; path = Library/hpple/XPathQuery.m; sourceTree = SOURCE_ROOT; };
 		8195C47A139CE4D400AC4334 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		8195C482139CECCA00AC4334 /* BMWebViewRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMWebViewRenderer.h; sourceTree = "<group>"; };
+		8195C483139CECCA00AC4334 /* BMWebViewRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMWebViewRenderer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,13 +144,13 @@
 				8195C316139CD44700AC4334 /* Library */,
 				813B5FBF139649940004ACA1 /* TestWebKitAppDelegate.h */,
 				813B5FC0139649940004ACA1 /* TestWebKitAppDelegate.m */,
-				813B5FC2139649940004ACA1 /* MainWindow.xib */,
-				813B5FC5139649940004ACA1 /* TestWebKitViewController.h */,
-				813B5FC6139649940004ACA1 /* TestWebKitViewController.m */,
-				813B5FC8139649940004ACA1 /* TestWebKitViewController.xib */,
+				813B5FC5139649940004ACA1 /* BMLibraryViewController.h */,
+				813B5FC6139649940004ACA1 /* BMLibraryViewController.m */,
 				813B5FB7139649940004ACA1 /* Supporting Files */,
 				8195C2FC139CD23900AC4334 /* BMEpub.h */,
 				8195C2FD139CD23900AC4334 /* BMEpub.m */,
+				8195C482139CECCA00AC4334 /* BMWebViewRenderer.h */,
+				8195C483139CECCA00AC4334 /* BMWebViewRenderer.m */,
 			);
 			path = TestWebKit;
 			sourceTree = "<group>";
@@ -156,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				813B683C139693EA0004ACA1 /* html */,
+				813B5FC2139649940004ACA1 /* MainWindow.xib */,
+				813B5FC8139649940004ACA1 /* BMLibraryViewController.xib */,
 				813B62BE139670400004ACA1 /* paginate.css */,
 				813B62BB13964FEA0004ACA1 /* paginate.js */,
 				813B5FB8139649940004ACA1 /* TestWebKit-Info.plist */,
@@ -286,7 +291,7 @@
 				813B62BF139670400004ACA1 /* paginate.css in Resources */,
 				813B5FBB139649940004ACA1 /* InfoPlist.strings in Resources */,
 				813B5FC4139649940004ACA1 /* MainWindow.xib in Resources */,
-				813B5FCA139649940004ACA1 /* TestWebKitViewController.xib in Resources */,
+				813B5FCA139649940004ACA1 /* BMLibraryViewController.xib in Resources */,
 				813B6841139693EA0004ACA1 /* large.jpg in Resources */,
 				813B6844139693EA0004ACA1 /* wide.jpg in Resources */,
 				813B6846139694070004ACA1 /* small.jpg in Resources */,
@@ -307,7 +312,7 @@
 			files = (
 				813B5FBE139649940004ACA1 /* main.m in Sources */,
 				813B5FC1139649940004ACA1 /* TestWebKitAppDelegate.m in Sources */,
-				813B5FC7139649940004ACA1 /* TestWebKitViewController.m in Sources */,
+				813B5FC7139649940004ACA1 /* BMLibraryViewController.m in Sources */,
 				813B62BC13964FEA0004ACA1 /* paginate.js in Sources */,
 				8195C2FE139CD23900AC4334 /* BMEpub.m in Sources */,
 				8195C303139CD41A00AC4334 /* ZipArchive.mm in Sources */,
@@ -319,6 +324,7 @@
 				8195C469139CDABB00AC4334 /* TFHpple.m in Sources */,
 				8195C46A139CDABB00AC4334 /* TFHppleElement.m in Sources */,
 				8195C46B139CDABB00AC4334 /* XPathQuery.m in Sources */,
+				8195C484139CECCB00AC4334 /* BMWebViewRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,12 +347,12 @@
 			name = MainWindow.xib;
 			sourceTree = "<group>";
 		};
-		813B5FC8139649940004ACA1 /* TestWebKitViewController.xib */ = {
+		813B5FC8139649940004ACA1 /* BMLibraryViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				813B5FC9139649940004ACA1 /* en */,
 			);
-			name = TestWebKitViewController.xib;
+			name = BMLibraryViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
