@@ -28,6 +28,4 @@ img
 -webkit-column-break-before : auto;
 -webkit-column-break-after : auto ;
 -webkit-column-span: all;
-width:auto !important;
-height:auto !important;
 }
