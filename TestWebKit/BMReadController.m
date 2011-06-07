@@ -60,6 +60,11 @@
     mPageInfo.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:mPageInfo];
     [mPageInfo release];
+    
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapped:)];
+    tapRecognizer.numberOfTapsRequired = 1;
+    [self.view addGestureRecognizer:tapRecognizer];
+    [tapRecognizer release];
 }
 
 - (void)viewDidUnload
@@ -93,9 +98,10 @@
     mPageInfo.text = [NSString stringWithFormat:@"%d/%d %@", mRenderer.currentPage+1, mRenderer.numberOfPages, [[[book.spine objectAtIndex:self.currentItemIndex] valueForKey:@"path"] lastPathComponent]];
 }
 
-#pragma mark BMRendererDelegate
-- (void)renderer:(BMRenderer*)renderer didTappedAtPoint:(CGPoint) point
+- (void) didTapped:(UITapGestureRecognizer *)gestureRecognizer
 {
+    CGPoint point = [gestureRecognizer locationInView: self.view];
+    
     if ( point.x < kTapMargin )
     {
         if ( mRenderer.currentPage )
@@ -116,11 +122,14 @@
         else if ( self.currentItemIndex < [book.spine count] )
             self.currentItemIndex = self.currentItemIndex + 1;
     }
-    else
-    {
-        [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
-        [self.navigationController setToolbarHidden:self.navigationController.navigationBarHidden animated:YES];
-    }
+}
+
+
+#pragma mark BMRendererDelegate
+- (void)renderer:(BMRenderer*)renderer didTappedAtPoint:(CGPoint) point
+{
+    [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
+    [self.navigationController setToolbarHidden:self.navigationController.navigationBarHidden animated:YES];
 }
 
 - (void)renderer:(BMRenderer*)renderer willStartRender:(BOOL) flag
