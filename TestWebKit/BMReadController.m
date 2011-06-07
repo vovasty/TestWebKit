@@ -11,6 +11,10 @@
 #import "BMEpub.h"
 
 #define kTapMargin 50.f
+#define kTopPadding 50.f
+#define kBottomPadding 50.f
+#define kLeftPadding 50.f
+#define kRightPadding 50.f
 
 @implementation BMReadController
 @synthesize book, currentItemIndex;
@@ -43,7 +47,7 @@
 {
     [super viewDidLoad];
     
-    BMWebViewRenderer* renderer = [[BMWebViewRenderer alloc] initWithFrame:self.view.bounds];
+    BMWebViewRenderer* renderer = [[BMWebViewRenderer alloc] initWithFrame:CGRectMake(kLeftPadding, kTopPadding, CGRectGetWidth(self.view.bounds) - kLeftPadding - kRightPadding, CGRectGetHeight(self.view.bounds) - kBottomPadding - kTopPadding)];
     renderer.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:renderer];
     mRenderer = renderer;
