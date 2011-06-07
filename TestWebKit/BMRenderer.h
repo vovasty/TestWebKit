@@ -15,9 +15,16 @@
 - (void)renderer:(BMRenderer*)renderer didFinishRender:(BOOL) flag;
 @end
 
+@interface BMLink:NSObject
+@property (nonatomic, retain) NSDictionary* attributes;
+@property (nonatomic, retain) NSString* text;
+@property (nonatomic) CGRect frame;
+@end
+
 @interface BMRenderer:UIView
 - (void) loadFile:(NSString*) path;
 @property (nonatomic, assign) id<BMRendererDelegate> delegate;
 @property (nonatomic) NSUInteger numberOfPages;
 @property (nonatomic) NSUInteger currentPage;
+- (BMLink*) linkAtPoint:(CGPoint) point;
 @end

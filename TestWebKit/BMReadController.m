@@ -65,6 +65,8 @@
     tapRecognizer.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tapRecognizer];
     [tapRecognizer release];
+    
+//    self.view.backgroundColor = [UIColor blackColor];
 }
 
 - (void)viewDidUnload
@@ -128,8 +130,16 @@
 #pragma mark BMRendererDelegate
 - (void)renderer:(BMRenderer*)renderer didTappedAtPoint:(CGPoint) point
 {
-    [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
-    [self.navigationController setToolbarHidden:self.navigationController.navigationBarHidden animated:YES];
+    BMLink *link = [mRenderer linkAtPoint:point];
+    if ( link )
+    {
+        NSLog(@"%@", link);
+    }
+    else
+    {
+        [self.navigationController setNavigationBarHidden:!self.navigationController.navigationBarHidden animated:YES];
+        [self.navigationController setToolbarHidden:self.navigationController.navigationBarHidden animated:YES];
+    }
 }
 
 - (void)renderer:(BMRenderer*)renderer willStartRender:(BOOL) flag

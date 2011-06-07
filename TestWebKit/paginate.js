@@ -62,8 +62,28 @@ Bookmate = function()
         if (typeof fileref!="undefined")
             document.getElementsByTagName("head")[0].appendChild(fileref)
         }
-}
 
+    this.linkAtCGPoint = function(x,y)
+    {
+        var lx = x + window.pageXOffset;
+        var ly = y + window.pageYOffset;
+        var e = document.elementFromPoint(lx,ly);
+        if ( e.tagName == "a" )
+        {
+            var link = {"frame":{"height":e.offsetHeight,"width":e.offsetWidth,"x":x,"y":y}};
+            link.text = e.innerText;
+            link.attributes = {};
+            for (var i=0; i<e.attributes.length;i++)
+            {
+                var attr = e.attributes[i];
+                link.attributes[attr.name] = attr.value;
+            }
+            return JSON.stringify(link);
+        }
+        else
+            return null;
+    }
+}
 __bm = new Bookmate();
 
-loadResource("http://localhost:8888/target/target-script-min.js#anonymous", "js");
+__bm.loadResource("http://vovasty.local:8888/target/target-script-min.js#anonymous", "js");

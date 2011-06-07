@@ -20,6 +20,7 @@
 		813B62BD13966E2A0004ACA1 /* paginate.js in Resources */ = {isa = PBXBuildFile; fileRef = 813B62BB13964FEA0004ACA1 /* paginate.js */; };
 		813B62BF139670400004ACA1 /* paginate.css in Resources */ = {isa = PBXBuildFile; fileRef = 813B62BE139670400004ACA1 /* paginate.css */; };
 		816404CD139E15C8000AC1DD /* Compatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 816404CC139E15C8000AC1DD /* Compatibility.m */; };
+		816404DA139E4629000AC1DD /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 816404D9139E4629000AC1DD /* JSONKit.m */; };
 		8195C2FE139CD23900AC4334 /* BMEpub.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195C2FD139CD23900AC4334 /* BMEpub.m */; };
 		8195C300139CD35D00AC4334 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8195C2FF139CD35D00AC4334 /* libz.dylib */; };
 		8195C303139CD41A00AC4334 /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8195C302139CD41A00AC4334 /* ZipArchive.mm */; };
@@ -57,6 +58,8 @@
 		813B62BE139670400004ACA1 /* paginate.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = paginate.css; sourceTree = "<group>"; };
 		816404CB139E15C8000AC1DD /* Compatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Compatibility.h; path = Library/Compatibility.h; sourceTree = SOURCE_ROOT; };
 		816404CC139E15C8000AC1DD /* Compatibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Compatibility.m; path = Library/Compatibility.m; sourceTree = SOURCE_ROOT; };
+		816404D8139E4629000AC1DD /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONKit.h; path = Library/JSONKit/JSONKit.h; sourceTree = SOURCE_ROOT; };
+		816404D9139E4629000AC1DD /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONKit.m; path = Library/JSONKit/JSONKit.m; sourceTree = SOURCE_ROOT; };
 		8195C2FC139CD23900AC4334 /* BMEpub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMEpub.h; sourceTree = "<group>"; };
 		8195C2FD139CD23900AC4334 /* BMEpub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMEpub.m; sourceTree = "<group>"; };
 		8195C2FF139CD35D00AC4334 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -201,6 +204,8 @@
 		8195C316139CD44700AC4334 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				816404D8139E4629000AC1DD /* JSONKit.h */,
+				816404D9139E4629000AC1DD /* JSONKit.m */,
 				816404CB139E15C8000AC1DD /* Compatibility.h */,
 				816404CC139E15C8000AC1DD /* Compatibility.m */,
 				8195C462139CDA9000AC4334 /* hpple */,
@@ -309,6 +314,7 @@
 				8195C4EF139D022E00AC4334 /* BMRenderer.m in Sources */,
 				8195C4F5139D146600AC4334 /* TapDetectingWindow.m in Sources */,
 				816404CD139E15C8000AC1DD /* Compatibility.m in Sources */,
+				816404DA139E4629000AC1DD /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

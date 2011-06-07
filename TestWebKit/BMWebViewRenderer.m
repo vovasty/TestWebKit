@@ -9,6 +9,7 @@
 #import "BMWebViewRenderer.h"
 #import "TapDetectingWindow.h"
 #import "Compatibility.h"
+#import "JSONKit.h"
 
 @interface BMWebViewRenderer (Private) 
 - (void) paginate;
@@ -72,6 +73,23 @@
     return mCurrentPage;
 }
 
+- (BMLink*) linkAtPoint:(CGPoint) point
+{
+    NSString* js = [NSString stringWithFormat:@"__bm.linkAtCGPoint(%d,%d)", (int)point.x, (int)point.y];
+    NSString *res = [mWebView stringByEvaluatingJavaScriptFromString:js];
+    
+    if ( [@"" isEqualToString:res] )
+        return nil;
+
+    NSDictionary* linkDict = [res objectFromJSONString];
+    BMLink* link = [[BMLink alloc] init];
+    NSDictionary* linkFrame = [linkDict objectForKey:@"frame"];
+    link.frame = CGRectMake([[linkFrame objectForKey:@"x"] floatValue], [[linkFrame objectForKey:@"y"] floatValue], [[linkFrame objectForKey:@"width"] floatValue], [[linkFrame objectForKey:@"height"] floatValue]);
+    link.text = [linkDict objectForKey:@"text"];
+    link.attributes = [linkDict objectForKey:@"attributes"];
+    return [link autorelease];
+}
+
 - (void)dealloc
 {
     mWindow = (TapDetectingWindow *)[[UIApplication sharedApplication].windows objectAtIndex:0];
@@ -100,8 +118,8 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request 
  navigationType:(UIWebViewNavigationType)navigationType { 
-    [NSTimer cancelPreviousPerformRequestsWithTarget:self];
-    return YES; 
+    NSURL* url  = [request URL];
+    return url.isFileURL && !url.fragment; 
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error { 
@@ -142,5 +160,6 @@
 - (void) sendTapEvent:(NSValue*) point
 {
     [self.delegate renderer:self didTappedAtPoint:[point CGPointValue]];
+    [self linkAtPoint:[point CGPointValue]];
 }
 @end

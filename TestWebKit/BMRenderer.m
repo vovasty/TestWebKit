@@ -16,4 +16,26 @@
 {
     NSAssert(NO, @"Not implemented");
 }
+- (BMLink*) linkAtPoint:(CGPoint) point
+{
+    NSAssert(NO, @"Not implemented");
+    return nil;
+}
+@end
+
+
+@implementation BMLink
+@synthesize attributes, frame, text;
+
+- (NSString *) description
+{
+	return [NSString stringWithFormat: @"frame:%@\ntext:%@\nattributes:%@", NSStringFromCGRect(self.frame), self.text, self.attributes];
+}
+
+- (void)dealloc 
+{
+    self.attributes = nil;
+    self.text = nil;
+    [super dealloc];
+}
 @end
