@@ -132,7 +132,7 @@
 #pragma mark Private
 - (void) paginate;
 {
-    NSString *js = [NSString stringWithFormat:@"__bm.paginate(%d);", (KADeviceIsIPad() && UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation))?2:1];
+    NSString *js = [NSString stringWithFormat:@"__bm.paginate(%d);", (KADeviceIsIPad() && UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))?2:1];
     NSString* result = [mWebView stringByEvaluatingJavaScriptFromString:js];
     self.numberOfPages = [result intValue];
     self.currentPage = 0;
