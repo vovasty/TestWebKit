@@ -8,6 +8,7 @@
 
 #import "BMWebViewRenderer.h"
 #import "TapDetectingWindow.h"
+#import "Compatibility.h"
 
 @interface BMWebViewRenderer (Private) 
 - (void) paginate;
@@ -131,7 +132,7 @@
 #pragma mark Private
 - (void) paginate;
 {
-    NSString *js = [NSString stringWithFormat:@"__bm.paginate(%d);", UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)?1:2];
+    NSString *js = [NSString stringWithFormat:@"__bm.paginate(%d);", (KADeviceIsIPad() && UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation))?2:1];
     NSString* result = [mWebView stringByEvaluatingJavaScriptFromString:js];
     self.numberOfPages = [result intValue];
     self.currentPage = 0;
