@@ -9,6 +9,7 @@
 #import "BMReadController.h"
 #import "BMWebViewRenderer.h"
 #import "BMEpub.h"
+#import "BMAnnotationController.h"
 
 #define kTapMargin 50.f
 #define kTopPadding 50.f
@@ -23,6 +24,8 @@
 {
     [mRenderer release]; mRenderer = nil;
     [mPageInfo release]; mPageInfo = nil;
+    [mAnnotationPopover dismissPopoverAnimated:NO];
+    [mAnnotationPopover release]; mAnnotationPopover = nil;
 }
 
 - (void)dealloc
@@ -80,6 +83,11 @@
     self.navigationController.toolbarHidden = NO;
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [mAnnotationPopover dismissPopoverAnimated:NO];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return YES;
@@ -133,7 +141,19 @@
     BMLink *link = [mRenderer linkAtPoint:point];
     if ( link )
     {
-        NSLog(@"%@", link);
+        if ( !mAnnotationPopover )
+        {
+            BMAnnotationController* controller = [[BMAnnotationController alloc] initWithNibName:@"BMAnnotationController" bundle:nil];
+            UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+            mAnnotationPopover = [[UIPopoverController alloc] initWithContentViewController:navController];
+            mAnnotationPopover.popoverContentSize = controller.view.bounds.size;
+            [controller release];
+            [navController release];
+        }
+        
+        ((BMAnnotationController*)((UINavigationController*)mAnnotationPopover.contentViewController).topViewController).link = link;
+        
+        [mAnnotationPopover presentPopoverFromRect: link.frame inView:mRenderer permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
     else
     {

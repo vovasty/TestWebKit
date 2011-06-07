@@ -14,6 +14,7 @@
 {
     BMRenderer* mRenderer;
     UILabel* mPageInfo;
+    UIPopoverController* mAnnotationPopover;
 }
 
 @property(nonatomic, retain) BMEpub* book;
