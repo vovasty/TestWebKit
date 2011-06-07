@@ -31,21 +31,25 @@
         return YES;
     
     NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:[mPath lastPathComponent]];
-
-    [[NSFileManager defaultManager]  createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
-
-    ZipArchive* zip = [[ZipArchive alloc] init];
-    [zip UnzipOpenFile:mPath];
     
-    BOOL res = [zip UnzipFileTo:path overWrite:YES];
+    if ( ![[NSFileManager defaultManager] fileExistsAtPath:path] )
+    {
+        [[NSFileManager defaultManager]  createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+        
+        ZipArchive* zip = [[ZipArchive alloc] init];
+        [zip UnzipOpenFile:mPath];
+        
+        BOOL res = [zip UnzipFileTo:path overWrite:YES];
+        
+        [zip UnzipCloseFile];
+        [zip release];
+        
+        if ( res )
+            mPathExtracted = [path retain];
+        return res;
+    }
     
-    [zip UnzipCloseFile];
-    [zip release];
-    
-    if ( res )
-        mPathExtracted = [path retain];
-    
-    return res;
+    return YES;
 }
 
 -(NSArray*) spine
