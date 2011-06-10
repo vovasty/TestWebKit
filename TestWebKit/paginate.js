@@ -1,4 +1,4 @@
-//document.ontouchmove = function(event){event.preventDefault();}
+document.ontouchmove = function(event){event.preventDefault();}
 
 Bookmate = function()
 {
