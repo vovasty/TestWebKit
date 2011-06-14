@@ -64,11 +64,14 @@
 		return;
 	}
     
-	if ([touch.view isDescendantOfView:viewToObserve] == NO) {
+	if (touch.view && [touch.view isDescendantOfView:viewToObserve] == NO) {
 		return;
 	}
     
 	CGPoint tapPoint = [touch locationInView:viewToObserve];
+    
+    if ( !CGRectContainsPoint(viewToObserve.frame, tapPoint) )
+        return;
     
     NSValue* pointValue =[NSValue valueWithCGPoint:tapPoint];
     
