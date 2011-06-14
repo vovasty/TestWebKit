@@ -155,19 +155,36 @@
     BMLink *link = [mRenderer linkAtPoint:point];
     if ( link )
     {
-        if ( !mAnnotationPopover )
+        if ( KADeviceIsIPad() )
+        {
+            if ( !mAnnotationPopover )
+            {
+                BMAnnotationController* controller = [[BMAnnotationController alloc] initWithNibName:@"BMAnnotationController" bundle:nil];
+                UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+                mAnnotationPopover = [[UIPopoverController alloc] initWithContentViewController:navController];
+                mAnnotationPopover.popoverContentSize = controller.view.bounds.size;
+                [controller release];
+                [navController release];
+            }
+            
+            ((BMAnnotationController*)((UINavigationController*)mAnnotationPopover.contentViewController).topViewController).link = link;
+            
+            [mAnnotationPopover presentPopoverFromRect: link.frame inView:mRenderer permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        }
+        else
         {
             BMAnnotationController* controller = [[BMAnnotationController alloc] initWithNibName:@"BMAnnotationController" bundle:nil];
             UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-            mAnnotationPopover = [[UIPopoverController alloc] initWithContentViewController:navController];
-            mAnnotationPopover.popoverContentSize = controller.view.bounds.size;
+            navController.navigationBarHidden = NO;
+            navController.navigationBar.barStyle = UIBarStyleBlack;
+            UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissModalViewControllerAnimated:)];
+            controller.navigationItem.rightBarButtonItem = closeButton;
+            [closeButton release];
+            [self presentModalViewController:navController animated:YES];
+            controller.link = link;
             [controller release];
-            [navController release];
+            [navController release];        
         }
-        
-        ((BMAnnotationController*)((UINavigationController*)mAnnotationPopover.contentViewController).topViewController).link = link;
-        
-        [mAnnotationPopover presentPopoverFromRect: link.frame inView:mRenderer permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
     else
     {
