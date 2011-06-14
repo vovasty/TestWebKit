@@ -103,17 +103,19 @@ __bm = new function()
                 continue;
             
             if ( userWidth )
-                userWidth = parseInt(userWidth) / 100;
+                userWidth = parseInt(userWidth);
             else
-                userWidth = 1;
+                userWidth = 100;
 
             if ( userHeight )
-                userHeight = parseInt(userHeight) / 100;
+                userHeight = parseInt(userHeight);
             else
-                userHeight = 1;
+                userHeight = 100;
+            
+            var scale = Math.min(userWidth, userHeight) / 100;
 
-            var h = image.naturalHeight * userWidth;
-            var w = image.naturalWidth * userHeight;
+            var h = image.naturalHeight * scale;
+            var w = image.naturalWidth * scale;
             
             if ( w > this.maxImageWidth )
             {
