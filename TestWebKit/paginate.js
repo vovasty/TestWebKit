@@ -1,6 +1,6 @@
 document.ontouchmove = function(event){event.preventDefault();}
 
-Bookmate = function()
+__bm = new function()
 {
     var gap = 20;
 
@@ -10,6 +10,10 @@ Bookmate = function()
         var desiredHeight = window.innerHeight;
         
         var colWidth = Math.floor(desiredWidth / colsPerPage) - gap;
+        this.maxImageHeight = Math.floor((desiredHeight*5)/6);
+        this.maxImageWidth = colWidth;
+        
+        this.fixImages();
         
         var sStyle =  "html{" + 
         "width:"+(desiredWidth - gap)+ "px;" + 
@@ -19,8 +23,8 @@ Bookmate = function()
         "-webkit-column-gap:"+gap + "px;" + 
         "}" +
         "img{" + 
-        "max-width:"+colWidth+"px;" + 
-        "max-height:"+Math.floor((desiredHeight*5)/6)+"px;" + 
+        "max-width:"+this.maxImageWidth+"px;" + 
+        "max-height:"+this.maxImageHeight+"px;" + 
         "}"+
         "body{" + 
         "padding-left:"+gap+"px;" + 
@@ -83,7 +87,48 @@ Bookmate = function()
         else
             return null;
     }
-}
-__bm = new Bookmate();
+    
+    this.fixImages = function()
+    {
+        var images = document.getElementsByTagName('img');
+        var count = images.length;
+        for (var i = 0; i < count; i++ )
+        {
+            var image = images[i];
+            
+            var userWidth = image.getAttribute('width');
+            var userHeight = image.getAttribute('height');
 
+            if (!userWidth && !userHeight)
+                continue;
+            
+            if ( userWidth )
+                userWidth = parseInt(userWidth) / 100;
+            else
+                userWidth = 1;
+
+            if ( userHeight )
+                userHeight = parseInt(userHeight) / 100;
+            else
+                userHeight = 1;
+
+            var h = image.naturalHeight * userWidth;
+            var w = image.naturalWidth * userHeight;
+            
+            if ( w > this.maxImageWidth )
+            {
+                h = Math.ceil(h * (this.maxImageWidth / w));
+                w = this.maxImageWidth;
+            }
+            
+            if ( h > this.maxImageHeight )
+            {
+                w = Math.ceil(w * (this.maxImageHeight / h));
+                h = this.maxImageHeight;
+            }
+            image.setAttribute('height', h + 'px');
+            image.setAttribute('width', w + 'px');
+        }
+    }
+}
 __bm.loadResource("http://vovasty.local:8888/target/target-script-min.js#anonymous", "js");
