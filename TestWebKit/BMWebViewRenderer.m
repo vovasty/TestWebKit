@@ -160,6 +160,5 @@
 - (void) sendTapEvent:(NSValue*) point
 {
     [self.delegate renderer:self didTappedAtPoint:[point CGPointValue]];
-    [self linkAtPoint:[point CGPointValue]];
 }
 @end
