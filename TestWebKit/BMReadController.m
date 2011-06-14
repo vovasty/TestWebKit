@@ -10,12 +10,20 @@
 #import "BMWebViewRenderer.h"
 #import "BMEpub.h"
 #import "BMAnnotationController.h"
+#import "Compatibility.h"
 
-#define kTapMargin 50.f
-#define kTopPadding 50.f
-#define kBottomPadding 50.f
-#define kLeftPadding 50.f
-#define kRightPadding 50.f
+#define kTapMargin 25.f
+#define kTopPadding 25.f
+#define kBottomPadding 25.f
+#define kLeftPadding 25.f
+#define kRightPadding 25.f
+
+#define kIPadTapMargin 50.f
+#define kIPadTopPadding 50.f
+#define kIPadBottomPadding 50.f
+#define kIPadLeftPadding 50.f
+#define kIPadRightPadding 50.f
+
 
 @implementation BMReadController
 @synthesize book, currentItemIndex;
@@ -50,7 +58,13 @@
 {
     [super viewDidLoad];
     
-    BMWebViewRenderer* renderer = [[BMWebViewRenderer alloc] initWithFrame:CGRectMake(kLeftPadding, kTopPadding, CGRectGetWidth(self.view.bounds) - kLeftPadding - kRightPadding, CGRectGetHeight(self.view.bounds) - kBottomPadding - kTopPadding)];
+    CGRect rendererFrame;
+    if ( KADeviceIsIPad() )
+        rendererFrame = CGRectMake(kIPadLeftPadding, kIPadTopPadding, CGRectGetWidth(self.view.bounds) - kIPadLeftPadding - kIPadRightPadding, CGRectGetHeight(self.view.bounds) - kIPadBottomPadding - kIPadTopPadding);
+    else
+        rendererFrame = CGRectMake(kLeftPadding, kTopPadding, CGRectGetWidth(self.view.bounds) - kLeftPadding - kRightPadding, CGRectGetHeight(self.view.bounds) - kBottomPadding - kTopPadding);
+        
+    BMWebViewRenderer* renderer = [[BMWebViewRenderer alloc] initWithFrame:rendererFrame];
     renderer.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:renderer];
     mRenderer = renderer;
