@@ -119,13 +119,13 @@ __bm = new function()
             
             if ( w > this.maxImageWidth )
             {
-                h = Math.ceil(h * (this.maxImageWidth / w));
+                h = Math.floor(h * (this.maxImageWidth / w));
                 w = this.maxImageWidth;
             }
             
             if ( h > this.maxImageHeight )
             {
-                w = Math.ceil(w * (this.maxImageHeight / h));
+                w = Math.floor(w * (this.maxImageHeight / h));
                 h = this.maxImageHeight;
             }
             image.setAttribute('height', h + 'px');
